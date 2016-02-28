@@ -1,9 +1,10 @@
 {
   "name": "hockeyapp-api-wrapper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Wrap of the HockeyApp API for Node.js",
   "main": "index.js",
   "author": "Miguel Á. Domínguez Coloma",
+  "license": "MIT",
   "keywords": ["hockeyapp", "api", "wrapper"],
   "repository": {
     "type": "git",
@@ -12,6 +13,5 @@
   "dependencies": {
     "q": "^1.4.1",
     "request": "^2.69.0"
-  },
-  "engines": { "node": "*"}
+  }
 }

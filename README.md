@@ -10,7 +10,7 @@ Please, be free to collaborate!
 
 ```
 // Import module
-var HockeyApp = require('./hockeyapp.js');
+var HockeyApp = require('hockeyapp-api-wrapper');
 
 var YOUR_HOCKEYAPP_AUTH_TOKEN = 'aaaabbbbccccdddd0000111122223333';
 

@@ -35,3 +35,8 @@ node_modules
 *.iml
 test.js
 .vscode
+
+typings/
+
+# Ignore automatically generated js files from VS
+ts/**/*.js

@@ -6,19 +6,35 @@ declare function require(name: string);
 import request = require('request');
 import Q = require('q');
 
+/**
+ * Options for initialization or set up.
+ */
 export interface IOptions {
     hockeyAppToken: string;
 }
 
 export default class HockeyApp {
+
+    /**
+     * Information about requests
+     */
     public static get BASE_URL(): string { return 'https://rink.hockeyapp.net/api/2/'; }
     public static get GET_APPS_PATH(): string { return 'apps'; }
     public static get GET_APP_VERSION_PATH(): string { return 'apps/{public_identifier}/app_versions'; }
     public static get GET_ANDROID_APP_DOWNLOAD_PATH(): string { return 'apps/{public_identifier}/app_versions/{id}?format=apk'; }
     public static get HOCKEY_APP_TOKEN_HEADER(): string { return 'X-HockeyAppToken'; }
 
+    /**
+     * Options for initialization or set up.
+     */
     private _options: IOptions;
+    private get Options(): IOptions { return this._options; }
+    private set Options(value: IOptions) { this._options = value; }
 
+    /**
+     * Constructor
+     * @param options can be a string with the Auth Key or an object with the class options
+     */
     constructor(options: any) {
         if (typeof options === 'IOptions') {
             this.init(options);
@@ -29,18 +45,15 @@ export default class HockeyApp {
         }
     }
 
-    private get Options(): IOptions { return this._options; }
-    private set Options(value: IOptions) { this._options = value; }
-
     private init(options: IOptions) {
         this.Options = options;
     }
 
     /**
-        * Create request options for this API wrapper
-        * @param urlPath API path
-        * @param method GET by default
-        */
+      * Create request options for this API wrapper
+      * @param urlPath API path
+      * @param method GET by default
+      */
     private createRequestOptions(urlPath: string, method?: string): any {
         method = method || 'GET';
         var requestOptions = {
@@ -54,9 +67,9 @@ export default class HockeyApp {
     }
 
     /**
-        * Get all Apps
-        * @returns http://support.hockeyapp.net/kb/api/api-apps#list-apps
-        */
+     * Get all Apps
+     * @returns http://support.hockeyapp.net/kb/api/api-apps#list-apps
+     */
     public getApps(): Q.IPromise<any> {
         var deferred = Q.defer();
 
@@ -70,10 +83,10 @@ export default class HockeyApp {
     }
 
     /**
-        * Get all Versions of an app
-        * @param app: Response from HockeyApp.prototype.getApps
-        * @returns http://support.hockeyapp.net/kb/api/api-versions#list-versions
-        */
+     * Get all Versions of an app
+     * @param app: Response from HockeyApp.prototype.getApps
+     * @returns http://support.hockeyapp.net/kb/api/api-versions#list-versions
+     */
     public getVersions(app: any): Q.IPromise<any> {
         var deferred = Q.defer();
 
@@ -89,11 +102,11 @@ export default class HockeyApp {
     }
 
     /**
-        * Get latest version download link for Android app
-        * @param app: Response from HockeyApp.prototype.getApps
-        * @param version: Response from HockeyApp.prototype.getVersions
-        * @returns Downloadable APK
-        */
+     * Get latest version download link for Android app
+     * @param app: Response from HockeyApp.prototype.getApps
+     * @param version: Response from HockeyApp.prototype.getVersions
+     * @returns Downloadable APK
+     */
     public getLatestAndroidVersionDownloadLink(app: any, version: any): string {
         var public_identifier = app.public_identifier;
         var id = version.id;

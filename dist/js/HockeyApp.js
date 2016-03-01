@@ -50,10 +50,10 @@ var HockeyApp = (function () {
         this.Options = options;
     };
     /**
-     * Create request options for this API wrapper
-     * @param urlPath API path
-     * @param method GET by default
-     */
+        * Create request options for this API wrapper
+        * @param urlPath API path
+        * @param method GET by default
+        */
     HockeyApp.prototype.createRequestOptions = function (urlPath, method) {
         method = method || 'GET';
         var requestOptions = {
@@ -65,9 +65,9 @@ var HockeyApp = (function () {
         return requestOptions;
     };
     /**
-     * Get all Apps
-     * @returns http://support.hockeyapp.net/kb/api/api-apps#list-apps
-     */
+        * Get all Apps
+        * @returns http://support.hockeyapp.net/kb/api/api-apps#list-apps
+        */
     HockeyApp.prototype.getApps = function () {
         var deferred = Q.defer();
         var options = this.createRequestOptions(HockeyApp.GET_APPS_PATH);
@@ -78,10 +78,10 @@ var HockeyApp = (function () {
         return deferred.promise;
     };
     /**
-     * Get all Versions of an app
-     * @param app: Response from HockeyApp.prototype.getApps
-     * @returns http://support.hockeyapp.net/kb/api/api-versions#list-versions
-     */
+        * Get all Versions of an app
+        * @param app: Response from HockeyApp.prototype.getApps
+        * @returns http://support.hockeyapp.net/kb/api/api-versions#list-versions
+        */
     HockeyApp.prototype.getVersions = function (app) {
         var deferred = Q.defer();
         var public_identifier = app.public_identifier;
@@ -93,11 +93,11 @@ var HockeyApp = (function () {
         return deferred.promise;
     };
     /**
-     * Get latest version download link for Android app
-     * @param app: Response from HockeyApp.prototype.getApps
-     * @param version: Response from HockeyApp.prototype.getVersions
-     * @returns Downloadable APK
-     */
+        * Get latest version download link for Android app
+        * @param app: Response from HockeyApp.prototype.getApps
+        * @param version: Response from HockeyApp.prototype.getVersions
+        * @returns Downloadable APK
+        */
     HockeyApp.prototype.getLatestAndroidVersionDownloadLink = function (app, version) {
         var public_identifier = app.public_identifier;
         var id = version.id;
@@ -109,4 +109,4 @@ var HockeyApp = (function () {
     ;
     return HockeyApp;
 }());
-module.exports = HockeyApp;
+exports["default"] = HockeyApp;

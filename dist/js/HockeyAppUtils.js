@@ -18,4 +18,4 @@ var HockeyAppUtils = (function () {
     ;
     return HockeyAppUtils;
 }());
-module.exports = HockeyAppUtils;
+exports["default"] = HockeyAppUtils;

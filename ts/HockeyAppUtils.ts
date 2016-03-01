@@ -1,6 +1,6 @@
 'use strict';
 
-class HockeyAppUtils {
+export default class HockeyAppUtils {
     public static getAppByTitleMatch(appsResponse:any, match:string):any {
         var apps = appsResponse.apps;
 
@@ -17,5 +17,3 @@ class HockeyAppUtils {
         return versionResponse.app_versions[0];
     };
 }
-
-export = HockeyAppUtils;

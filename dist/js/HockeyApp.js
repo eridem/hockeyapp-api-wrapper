@@ -79,8 +79,8 @@ var HockeyApp = (function () {
         var deferred = Q.defer();
         var options = this.createRequestOptions(HockeyApp.GET_APPS_PATH);
         request(options, function (error, response, body) {
-            var json = JSON.parse(body);
-            deferred.resolve(json);
+            var result = JSON.parse(body);
+            deferred.resolve(result);
         });
         return deferred.promise;
     };
@@ -94,8 +94,8 @@ var HockeyApp = (function () {
         var public_identifier = app.public_identifier;
         var options = this.createRequestOptions(HockeyApp.GET_APP_VERSION_PATH.replace('{public_identifier}', public_identifier));
         request(options, function (error, response, body) {
-            var json = JSON.parse(body);
-            deferred.resolve(json);
+            var result = JSON.parse(body);
+            deferred.resolve(result);
         });
         return deferred.promise;
     };
@@ -110,7 +110,7 @@ var HockeyApp = (function () {
         var id = version.id;
         var downloadUrl = HockeyApp.BASE_URL + HockeyApp.GET_ANDROID_APP_DOWNLOAD_PATH
             .replace('{public_identifier}', public_identifier)
-            .replace("{id}", id);
+            .replace("{id}", id.toString());
         return downloadUrl;
     };
     ;

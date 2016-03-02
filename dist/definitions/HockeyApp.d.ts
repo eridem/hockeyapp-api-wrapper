@@ -37,18 +37,18 @@ export default class HockeyApp {
      * Get all Apps
      * @returns http://support.hockeyapp.net/kb/api/api-apps#list-apps
      */
-    getApps(): Q.IPromise<any>;
+    getApps(): Q.IPromise<HockeyAppModels.IAppResponse>;
     /**
      * Get all Versions of an app
      * @param app: Response from HockeyApp.prototype.getApps
      * @returns http://support.hockeyapp.net/kb/api/api-versions#list-versions
      */
-    getVersions(app: any): Q.IPromise<any>;
+    getVersions(app: HockeyAppModels.IApp): Q.IPromise<HockeyAppModels.IVersionResponse>;
     /**
      * Get latest version download link for Android app
      * @param app: Response from HockeyApp.prototype.getApps
      * @param version: Response from HockeyApp.prototype.getVersions
      * @returns Downloadable APK
      */
-    getLatestAndroidVersionDownloadLink(app: any, version: any): string;
+    getLatestAndroidVersionDownloadLink(app: HockeyAppModels.IApp, version: HockeyAppModels.IVersion): string;
 }

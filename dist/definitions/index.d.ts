@@ -1,5 +1,5 @@
 /// <reference path="HockeyApp.d.ts" />
 /// <reference path="HockeyAppUtils.d.ts" />
-import HockeyApp from './HockeyApp';
-import HockeyAppUtils from './HockeyAppUtils';
-export { HockeyApp, HockeyAppUtils };
+import Client from './HockeyApp';
+import Utils from './HockeyAppUtils';
+export { Client, Utils };

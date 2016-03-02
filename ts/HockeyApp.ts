@@ -70,13 +70,13 @@ export default class HockeyApp {
      * Get all Apps
      * @returns http://support.hockeyapp.net/kb/api/api-apps#list-apps
      */
-    public getApps(): Q.IPromise<any> {
+    public getApps(): Q.IPromise<HockeyAppModels.IAppResponse> {
         var deferred = Q.defer();
 
         var options = this.createRequestOptions(HockeyApp.GET_APPS_PATH);
         request(options, function (error, response, body) {
-            var json = JSON.parse(body);
-            deferred.resolve(json);
+            var result: HockeyAppModels.IAppResponse = JSON.parse(body);
+            deferred.resolve(result);
         });
 
         return deferred.promise;
@@ -87,15 +87,15 @@ export default class HockeyApp {
      * @param app: Response from HockeyApp.prototype.getApps
      * @returns http://support.hockeyapp.net/kb/api/api-versions#list-versions
      */
-    public getVersions(app: any): Q.IPromise<any> {
+    public getVersions(app: HockeyAppModels.IApp): Q.IPromise<HockeyAppModels.IVersionResponse> {
         var deferred = Q.defer();
 
         var public_identifier = app.public_identifier;
         var options = this.createRequestOptions(
             HockeyApp.GET_APP_VERSION_PATH.replace('{public_identifier}', public_identifier));
         request(options, function (error, response, body) {
-            var json = JSON.parse(body);
-            deferred.resolve(json);
+            var result: HockeyAppModels.IVersionResponse = JSON.parse(body);
+            deferred.resolve(result);
         });
 
         return deferred.promise;
@@ -107,12 +107,12 @@ export default class HockeyApp {
      * @param version: Response from HockeyApp.prototype.getVersions
      * @returns Downloadable APK
      */
-    public getLatestAndroidVersionDownloadLink(app: any, version: any): string {
+    public getLatestAndroidVersionDownloadLink(app: HockeyAppModels.IApp, version: HockeyAppModels.IVersion): string {
         var public_identifier = app.public_identifier;
         var id = version.id;
         var downloadUrl = HockeyApp.BASE_URL + HockeyApp.GET_ANDROID_APP_DOWNLOAD_PATH
             .replace('{public_identifier}', public_identifier)
-            .replace("{id}", id);
+            .replace("{id}", id.toString());
         return downloadUrl;
     };
 }

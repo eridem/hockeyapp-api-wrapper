@@ -2,11 +2,11 @@
 /// <reference path="hockeyapputils.ts" />
 'use strict';
 
-import HockeyApp from './HockeyApp';
-import HockeyAppUtils from './HockeyAppUtils';
+import Client from './HockeyApp';
+import Utils from './HockeyAppUtils';
  
 // an example of named exports
 export {
-    HockeyApp,
-    HockeyAppUtils
+    Client,
+    Utils
 };

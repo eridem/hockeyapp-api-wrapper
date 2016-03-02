@@ -10,19 +10,19 @@ Please, be free to collaborate!
 
 ```
 // Import module
-var HAAW = require('hockeyapp-api-wrapper');
+var HockeyApp = require('hockeyapp-api-wrapper');
 
 // HockeyApp Auth Token
 var YOUR_HOCKEYAPP_AUTH_TOKEN = 'aaaabbbbccccdddd0000111122223333';
 
 // Init client
-var hockeyAppCli = new HAAW.HockeyApp(YOUR_HOCKEYAPP_AUTH_TOKEN);
+var hockeyAppCli = new HockeyApp.Client(YOUR_HOCKEYAPP_AUTH_TOKEN);
 
 hockeyAppCli.getApps().then(function(appsResponse) {
-    var app = HAAW.Utils.getAppByTitleMatch(appsResponse, "YOUR HOCKEY APP TITLE");
+    var app = HockeyApp.Utils.getAppByTitleMatch(appsResponse, "YOUR HOCKEY APP TITLE");
 
     hockeyAppCli.getVersions(app).then(function(versionResponse) {
-        var version = HAAW.Utils.getLatestVersion(versionResponse);
+        var version = HockeyApp.Utils.getLatestVersion(versionResponse);
 
         var downloadUrl = hockeyAppCli.getLatestAndroidVersionDownloadLink(app, version);
 

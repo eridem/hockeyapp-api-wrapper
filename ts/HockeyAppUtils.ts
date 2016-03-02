@@ -9,7 +9,7 @@ export default class HockeyAppUtils {
      * @param appsResponse response from getApps method
      * @param match title to match
      */
-    public static getAppByTitleMatch(appsResponse:any, match:string):any {
+    public static getAppByTitleMatch(appsResponse: HockeyAppModels.IAppResponse, match: string): HockeyAppModels.IApp {
         var apps = appsResponse.apps;
 
         for (var i = 0; i < apps.length; i++) {
@@ -25,7 +25,7 @@ export default class HockeyAppUtils {
      * From the response of "getVersions" returns the latest version
      * @param versionResponse response from getVersions method
      */
-    public static getLatestVersion(versionResponse: any):any {
+    public static getLatestVersion(versionResponse: HockeyAppModels.IVersionResponse): HockeyAppModels.IVersion {
         return versionResponse.app_versions[0];
     };
 }

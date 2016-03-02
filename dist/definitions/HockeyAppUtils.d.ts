@@ -7,10 +7,10 @@ export default class HockeyAppUtils {
      * @param appsResponse response from getApps method
      * @param match title to match
      */
-    static getAppByTitleMatch(appsResponse: any, match: string): any;
+    static getAppByTitleMatch(appsResponse: HockeyAppModels.IAppResponse, match: string): HockeyAppModels.IApp;
     /**
      * From the response of "getVersions" returns the latest version
      * @param versionResponse response from getVersions method
      */
-    static getLatestVersion(versionResponse: any): any;
+    static getLatestVersion(versionResponse: HockeyAppModels.IVersionResponse): HockeyAppModels.IVersion;
 }

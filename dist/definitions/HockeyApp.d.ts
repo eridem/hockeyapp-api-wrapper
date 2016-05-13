@@ -48,5 +48,5 @@ export default class HockeyApp {
      * @param version: Response from HockeyApp.prototype.getVersions
      * @returns Downloadable APK
      */
-    getLatestAndroidVersionDownloadLink(app: HockeyAppModels.IApp, version: HockeyAppModels.IVersion): string;
+    getLatestAndroidVersionDownloadLink(app: HockeyAppModels.IApp, version: HockeyAppModels.IVersion, extension: string): string;
 }

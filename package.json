@@ -1,6 +1,6 @@
 {
   "name": "hockeyapp-api-wrapper",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Wrap of the HockeyApp API for Node.js",
   "main": "dist/js/index.js",
   "author": "Miguel Á. Domínguez Coloma",

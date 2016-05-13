@@ -38,7 +38,7 @@ var HockeyApp = (function () {
         configurable: true
     });
     Object.defineProperty(HockeyApp, "GET_ANDROID_APP_DOWNLOAD_PATH", {
-        get: function () { return 'apps/{public_identifier}/app_versions/{id}?format=apk'; },
+        get: function () { return 'apps/{public_identifier}/app_versions/{id}?format={extension}'; },
         enumerable: true,
         configurable: true
     });
@@ -105,11 +105,12 @@ var HockeyApp = (function () {
      * @param version: Response from HockeyApp.prototype.getVersions
      * @returns Downloadable APK
      */
-    HockeyApp.prototype.getLatestAndroidVersionDownloadLink = function (app, version) {
+    HockeyApp.prototype.getLatestAndroidVersionDownloadLink = function (app, version, extension) {
         var public_identifier = app.public_identifier;
         var id = version.id;
         var downloadUrl = HockeyApp.BASE_URL + HockeyApp.GET_ANDROID_APP_DOWNLOAD_PATH
             .replace('{public_identifier}', public_identifier)
+            .replace('{extension}', extension)
             .replace("{id}", id.toString());
         return downloadUrl;
     };

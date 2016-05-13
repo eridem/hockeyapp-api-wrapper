@@ -25,7 +25,7 @@ hockeyAppCli.getApps().then(function(appsResponse) {
     hockeyAppCli.getVersions(app).then(function(versionResponse) {
         var version = HockeyApp.Utils.getLatestVersion(versionResponse);
 
-        var downloadUrl = hockeyAppCli.getLatestAndroidVersionDownloadLink(app, version);
+        var downloadUrl = hockeyAppCli.getLatestAndroidVersionDownloadLink(app, version, "apk");
 
         console.log(downloadUrl);
     });
@@ -51,7 +51,7 @@ hockeyAppCli.getApps().then(function(appsResponse) {
     hockeyAppCli.getVersions(app).then(function(versionResponse) {
         var version = HockeyApp.Utils.getLatestVersion(versionResponse);
 
-        var downloadUrl = hockeyAppCli.getLatestAndroidVersionDownloadLink(app, version);
+        var downloadUrl = hockeyAppCli.getLatestAndroidVersionDownloadLink(app, version, "apk");
 
         console.log(downloadUrl);
     });

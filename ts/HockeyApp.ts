@@ -21,7 +21,7 @@ export default class HockeyApp {
     public static get BASE_URL(): string { return 'https://rink.hockeyapp.net/api/2/'; }
     public static get GET_APPS_PATH(): string { return 'apps'; }
     public static get GET_APP_VERSION_PATH(): string { return 'apps/{public_identifier}/app_versions'; }
-    public static get GET_ANDROID_APP_DOWNLOAD_PATH(): string { return 'apps/{public_identifier}/app_versions/{id}?format=apk'; }
+    public static get GET_ANDROID_APP_DOWNLOAD_PATH(): string { return 'apps/{public_identifier}/app_versions/{id}?format={extension}'; }
     public static get HOCKEY_APP_TOKEN_HEADER(): string { return 'X-HockeyAppToken'; }
 
     /**
@@ -107,11 +107,12 @@ export default class HockeyApp {
      * @param version: Response from HockeyApp.prototype.getVersions
      * @returns Downloadable APK
      */
-    public getLatestAndroidVersionDownloadLink(app: HockeyAppModels.IApp, version: HockeyAppModels.IVersion): string {
+    public getLatestAndroidVersionDownloadLink(app: HockeyAppModels.IApp, version: HockeyAppModels.IVersion, extension: string): string {
         var public_identifier = app.public_identifier;
         var id = version.id;
         var downloadUrl = HockeyApp.BASE_URL + HockeyApp.GET_ANDROID_APP_DOWNLOAD_PATH
             .replace('{public_identifier}', public_identifier)
+            .replace('{extension}', extension)
             .replace("{id}", id.toString());
         return downloadUrl;
     };

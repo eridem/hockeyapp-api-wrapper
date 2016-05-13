@@ -20,6 +20,23 @@ export default class HockeyAppUtils {
 
         return null;
     };
+    
+     /**
+     * From the response of "getApps" returns an item that match the id
+     * @param appsResponse response from getApps method
+     * @param match title to match
+     */
+    public static getAppByIdMatch(appsResponse: HockeyAppModels.IAppResponse, match: string): HockeyAppModels.IApp {
+        var apps = appsResponse.apps;
+
+        for (var i = 0; i < apps.length; i++) {
+            if (apps[i].public_identifier == match) {
+                return apps[i];
+            }
+        }
+
+        return null;
+    };
 
     /**
      * From the response of "getVersions" returns the latest version

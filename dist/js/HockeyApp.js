@@ -116,4 +116,5 @@ var HockeyApp = (function () {
     ;
     return HockeyApp;
 }());
+exports.__esModule = true;
 exports["default"] = HockeyApp;

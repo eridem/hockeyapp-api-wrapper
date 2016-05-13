@@ -1,5 +1,3 @@
-/// <reference path="../typings/main/ambient/request/request.d.ts" />
-/// <reference path="../typings/main/ambient/q/q.d.ts" />
 import Q = require('q');
 /**
  * Options for initialization or set up.

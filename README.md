@@ -14,12 +14,39 @@ var HockeyApp = require('hockeyapp-api-wrapper');
 
 // HockeyApp Auth Token
 var YOUR_HOCKEYAPP_AUTH_TOKEN = 'aaaabbbbccccdddd0000111122223333';
+var YOUR_APP_TITLE = 'YOUR HOCKEYAPP APP TITLE';
 
 // Init client
 var hockeyAppCli = new HockeyApp.Client(YOUR_HOCKEYAPP_AUTH_TOKEN);
 
 hockeyAppCli.getApps().then(function(appsResponse) {
-    var app = HockeyApp.Utils.getAppByTitleMatch(appsResponse, "YOUR HOCKEY APP TITLE");
+    var app = HockeyApp.Utils.getAppByTitleMatch(appsResponse, YOUR_APP_TITLE);
+
+    hockeyAppCli.getVersions(app).then(function(versionResponse) {
+        var version = HockeyApp.Utils.getLatestVersion(versionResponse);
+
+        var downloadUrl = hockeyAppCli.getLatestAndroidVersionDownloadLink(app, version);
+
+        console.log(downloadUrl);
+    });
+});
+```
+
+## By Id
+
+```
+// Import module
+var HockeyApp = require('hockeyapp-api-wrapper');
+
+// HockeyApp Auth Token
+var YOUR_HOCKEYAPP_AUTH_TOKEN = 'aaaabbbbccccdddd0000111122223333';
+var YOUR_APP_ID = 'aaaabbbbccccdddd0000111122223333'
+
+// Init client
+var hockeyAppCli = new HockeyApp.Client(YOUR_HOCKEYAPP_AUTH_TOKEN);
+
+hockeyAppCli.getApps().then(function(appsResponse) {
+    var app = HockeyApp.Utils.getAppByIdMatch(appsResponse, YOUR_APP_ID);
 
     hockeyAppCli.getVersions(app).then(function(versionResponse) {
         var version = HockeyApp.Utils.getLatestVersion(versionResponse);

@@ -1,6 +1,6 @@
 {
   "name": "hockeyapp-api-wrapper",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Wrap of the HockeyApp API for Node.js",
   "main": "dist/js/index.js",
   "author": "Miguel Á. Domínguez Coloma",
@@ -12,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ERiDeM/hockeyapp-api-wrapper.git"
+    "url": "git@bitbucket.org:ERiDeM/hockeyapp-api-wrapper.git"
   },
   "dependencies": {
     "q": "^1.4.1",

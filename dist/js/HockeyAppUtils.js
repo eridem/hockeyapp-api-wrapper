@@ -35,6 +35,16 @@ var HockeyAppUtils = (function () {
         return null;
     };
     ;
+    HockeyAppUtils.getAppByVersionFilter = function (versionResponse, filter) {
+        var versions = versionResponse.app_versions;
+        for (var i = 0; i < versions.length; i++) {
+            var version = versions[i];
+            if (filter(version)) {
+                return version;
+            }
+        }
+        return null;
+    };
     /**
      * From the response of "getVersions" returns the latest version
      * @param versionResponse response from getVersions method

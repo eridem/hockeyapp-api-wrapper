@@ -14,6 +14,7 @@ export default class HockeyAppUtils {
     * @param match title to match
     */
     static getAppByIdMatch(appsResponse: HockeyAppModels.IAppResponse, match: string): HockeyAppModels.IApp;
+    static getAppByVersionFilter(versionResponse: HockeyAppModels.IVersionResponse, filter: (version) => boolean): HockeyAppModels.IVersion;
     /**
      * From the response of "getVersions" returns the latest version
      * @param versionResponse response from getVersions method

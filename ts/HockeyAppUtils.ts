@@ -38,6 +38,19 @@ export default class HockeyAppUtils {
         return null;
     };
 
+    public static getAppByVersionFilter(versionResponse: HockeyAppModels.IVersionResponse, filter: (version) => boolean) {
+        var versions = versionResponse.app_versions;
+
+        for (var i = 0; i < versions.length; i++) {
+            let version = versions[i];
+            if (filter(version)) {
+                return version;
+            }
+        }
+
+        return null;
+    }
+
     /**
      * From the response of "getVersions" returns the latest version
      * @param versionResponse response from getVersions method

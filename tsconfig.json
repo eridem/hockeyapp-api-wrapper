@@ -1,17 +1,35 @@
 ﻿{
+  "compileOnSave": true,
   "compilerOptions": {
-    "target": "es5",
-    "module": "system",
-    "moduleResolution": "node",
+  "outDir": "./dist/",
+    "target": "es6",
+    "module": "commonjs",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "removeComments": true,
-    "noImplicitAny": false
+    "removeComments": false,
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors":true
   },
   "exclude": [
-    "node_modules",
-    "typings/**/*.ds.ts",
-    "typings/main.d.ts"
-  ]
+    "typings",
+    "dist",
+    "lib",
+    "test",
+    "node_modules"
+  ],
+  "formatCodeOptions": {
+    "indentSize": 2,
+    "tabSize": 2,
+    "newLineCharacter": "\r\n",
+    "convertTabsToSpaces": true,
+    "insertSpaceAfterCommaDelimiter": true,
+    "insertSpaceAfterSemicolonInForStatements": true,
+    "insertSpaceBeforeAndAfterBinaryOperators": true,
+    "insertSpaceAfterKeywordsInControlFlowStatements": true,
+    "insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+    "placeOpenBraceOnNewLineForFunctions": false,
+    "placeOpenBraceOnNewLineForControlBlocks": false
+  }
 }

@@ -1,8 +1,6 @@
-/// <reference path="../typings/main/ambient/request/request.d.ts" />
-/// <reference path="../typings/main/ambient/q/q.d.ts" />
 'use strict';
+/// <reference path="../typings/request/request.d.ts" />
 var request = require('request');
-var Q = require('q');
 var HockeyApp = (function () {
     /**
      * Constructor
@@ -76,13 +74,14 @@ var HockeyApp = (function () {
      * @returns http://support.hockeyapp.net/kb/api/api-apps#list-apps
      */
     HockeyApp.prototype.getApps = function () {
-        var deferred = Q.defer();
-        var options = this.createRequestOptions(HockeyApp.GET_APPS_PATH);
-        request(options, function (error, response, body) {
-            var result = JSON.parse(body);
-            deferred.resolve(result);
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var options = _this.createRequestOptions(HockeyApp.GET_APPS_PATH);
+            request(options, function (error, response, body) {
+                var result = JSON.parse(body);
+                resolve(result);
+            });
         });
-        return deferred.promise;
     };
     /**
      * Get all Versions of an app
@@ -90,14 +89,15 @@ var HockeyApp = (function () {
      * @returns http://support.hockeyapp.net/kb/api/api-versions#list-versions
      */
     HockeyApp.prototype.getVersions = function (app) {
-        var deferred = Q.defer();
-        var public_identifier = app.public_identifier;
-        var options = this.createRequestOptions(HockeyApp.GET_APP_VERSION_PATH.replace('{public_identifier}', public_identifier));
-        request(options, function (error, response, body) {
-            var result = JSON.parse(body);
-            deferred.resolve(result);
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var public_identifier = app.public_identifier;
+            var options = _this.createRequestOptions(HockeyApp.GET_APP_VERSION_PATH.replace('{public_identifier}', public_identifier));
+            request(options, function (error, response, body) {
+                var result = JSON.parse(body);
+                resolve(result);
+            });
         });
-        return deferred.promise;
     };
     /**
      * Get latest version download link for Android app

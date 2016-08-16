@@ -1,10 +1,7 @@
-/// <reference path="../typings/main/ambient/request/request.d.ts" />
-/// <reference path="../typings/main/ambient/q/q.d.ts" />
 'use strict';
-declare function require(name: string);
 
+/// <reference path="../typings/request/request.d.ts" />
 import request = require('request');
-import Q = require('q');
 
 /**
  * Options for initialization or set up.
@@ -70,16 +67,14 @@ export default class HockeyApp {
      * Get all Apps
      * @returns http://support.hockeyapp.net/kb/api/api-apps#list-apps
      */
-    public getApps(): Q.IPromise<HockeyAppModels.IAppResponse> {
-        var deferred = Q.defer();
-
-        var options = this.createRequestOptions(HockeyApp.GET_APPS_PATH);
-        request(options, function (error, response, body) {
-            var result: HockeyAppModels.IAppResponse = JSON.parse(body);
-            deferred.resolve(result);
-        });
-
-        return deferred.promise;
+    public getApps(): Promise<HockeyAppModels.IAppResponse> {
+        return new Promise<HockeyAppModels.IAppResponse>((resolve, reject) => {
+            var options = this.createRequestOptions(HockeyApp.GET_APPS_PATH);
+            request(options, (error, response, body) => {
+                var result: HockeyAppModels.IAppResponse = JSON.parse(body);
+                resolve(result);
+            });
+        })
     }
 
     /**
@@ -87,18 +82,16 @@ export default class HockeyApp {
      * @param app: Response from HockeyApp.prototype.getApps
      * @returns http://support.hockeyapp.net/kb/api/api-versions#list-versions
      */
-    public getVersions(app: HockeyAppModels.IApp): Q.IPromise<HockeyAppModels.IVersionResponse> {
-        var deferred = Q.defer();
-
-        var public_identifier = app.public_identifier;
-        var options = this.createRequestOptions(
-            HockeyApp.GET_APP_VERSION_PATH.replace('{public_identifier}', public_identifier));
-        request(options, function (error, response, body) {
-            var result: HockeyAppModels.IVersionResponse = JSON.parse(body);
-            deferred.resolve(result);
-        });
-
-        return deferred.promise;
+    public getVersions(app: HockeyAppModels.IApp): Promise<HockeyAppModels.IVersionResponse> {
+        return new Promise((resolve, reject) => {
+            var public_identifier = app.public_identifier;
+            var options = this.createRequestOptions(
+                HockeyApp.GET_APP_VERSION_PATH.replace('{public_identifier}', public_identifier));
+            request(options, function (error, response, body) {
+                var result: HockeyAppModels.IVersionResponse = JSON.parse(body);
+                resolve(result);
+            });
+        })
     }
 
     /**

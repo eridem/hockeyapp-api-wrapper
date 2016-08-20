@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/eridem/hockeyapp-api-wrapper.svg?branch=master)](https://travis-ci.org/eridem/hockeyapp-api-wrapper)
+
 # HockeyApp module helper for NodeJS
  
 This module wraps the [HockeyApp API](http://support.hockeyapp.net/kb/api). The work is in progress and so far only covers the solutions are needed in our teams.
@@ -57,3 +59,8 @@ hockeyAppCli.getApps().then(function(appsResponse) {
     });
 });
 ```
+
+## Additional notes
+
+- Moved to GitHub
+- Add Travis CI

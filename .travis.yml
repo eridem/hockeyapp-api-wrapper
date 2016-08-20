@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- '6'
+before_script:
+- npm install -g gulp
+script: gulp
+install:
+- npm install
+deploy:
+  provider: npm
+  email: m@eridem.net
+  api_key:
+    secure: Tv+LEeMNlUEGZ8mE7zJMotOwUK1skl/EP4t67G3Q855OZ2L4ud3aB5/bQQ3RElKzj9aNzwyGeRQ/h1XG/jXIs5lKGmueOTwhZTEO4/PHaY0e35xW5CIsLPVkOOjsGbYtz9Qs2y3Twi5mLBsKGjw0IHenqGxzeIFvtCjWstxTVi79ancP4UKnVcCPdFyxDPW/STLObH4DlwEkFUFSPUttYSb6OsxS//WMRplGGUK1C4eh47uAnleC6Qou2DXcu/wwHQcHeHtutf4We7vMc0NcbWhurXLwK60EYqLoO6IvSC5OyJwsXPnf0jj6blfz1rC87duUfKI0yPkctCmKlqZin10yD/8QTGPi+STH/PC4KKrzzLW/NwCQWuXpxC0yyFwERLhLkAkXTf99tZhxlmkod+Wj7hGKBCO494PysJrUoJoQyqJiibT0rJeKl5hBMhLpF+9TySzA8WJHz9piwVJXAY6I8QWspIBCahb8TFnKjKyxrFAMvkOAt0eUj6sV6zzVUyMBwUjoOJgEXXr5/JW3fuphRCfQEeRrOsni+wh6aZDxDkJy8THW1QwgeIY3yeL/HxI3y/pvLGT6BjP1jdJhyXiCR8VzmnJfooHJYMtq4qgZcZIJJtVzLDRYhKMXKmLaQfc3gTS95I6mVa3QJB611dbeJ2RY5GbL7rgtVKc/BYM=
+  on:
+    tags: true
+    repo: eridem/hockeyapp-api-wrapper

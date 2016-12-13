@@ -1,9 +1,13 @@
 {
   "name": "hockeyapp-api-wrapper",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Wrap of the HockeyApp API for Node.js",
   "main": "dist/index.js",
-  "author": "Miguel Á. Domínguez Coloma",
+  "author": {
+    "name": "Miguel Ángel Domínguez Coloma",
+    "email": "m@eridem.net",
+    "url": "http://eridem.net"
+  },
   "license": "MIT",
   "keywords": [
     "hockeyapp",
